@@ -1,0 +1,90 @@
+@font-face {font-family: 'sy-jixi';
+    src: url('../../assets/fonts/sy-jixi/webfont.eot'); /* IE9*/
+    src: url('../../assets/fonts/sy-jixi/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../assets/fonts/sy-jixi/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../../assets/fonts/sy-jixi/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../assets/fonts/sy-jixi/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {font-family: 'sy-xi';
+    src: url('../../assets/fonts/sy-xi/webfont.eot'); /* IE9*/
+    src: url('../../assets/fonts/sy-xi/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../assets/fonts/sy-xi/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../../assets/fonts/sy-xi/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../assets/fonts/sy-xi/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {font-family: 'sy-changgui';
+    src: url('../../assets/fonts/sy-changgui/webfont.eot'); /* IE9*/
+    src: url('../../assets/fonts/sy-changgui/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../assets/fonts/sy-changgui/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../../assets/fonts/sy-changgui/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../assets/fonts/sy-changgui/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {font-family: 'sy-putong';
+    src: url('../../assets/fonts/sy-putong/webfont.eot'); /* IE9*/
+    src: url('../../assets/fonts/sy-putong/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../assets/fonts/sy-putong/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../../assets/fonts/sy-putong/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../assets/fonts/sy-putong/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {font-family: 'sy-cu';
+    src: url('../../assets/fonts/sy-cu/webfont.eot'); /* IE9*/
+    src: url('../../assets/fonts/sy-cu/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../assets/fonts/sy-cu/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../../assets/fonts/sy-cu/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../assets/fonts/sy-cu/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {font-family: 'sy-zhengcu';
+    src: url('../../assets/fonts/sy-zhengcu/webfont.eot'); /* IE9*/
+    src: url('../../assets/fonts/sy-zhengcu/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../assets/fonts/sy-zhengcu/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../../assets/fonts/sy-zhengcu/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../assets/fonts/sy-zhengcu/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+
+.sy-jixi, .sy-jixi *{
+    font-family:"sy-jixi" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sy-xi, .sy-xi *{
+    font-family:"sy-xi" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sy-changgui, .sy-changgui *{
+    font-family:"sy-changgui" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sy-putong, .sy-putong *{
+    font-family:"sy-putong" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sy-cu, .sy-cu *{
+    font-family:"sy-cu" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sy-zhengcu, .sy-zhengcu *{
+    font-family:"sy-zhengcu" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
