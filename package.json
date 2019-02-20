@@ -4,9 +4,9 @@
   "description": "本科毕业设计——深度映像工作室官网的首页部分",
   "private": true,
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server",
+    "dev": "node_modules/.bin/webpack-dev-server --open --config config/webpack.dev.js",
     "start": "npm run dev",
-    "build": "node_modules/.bin/webpack",
+    "build": "node_modules/.bin/webpack --config config/webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,7 +24,8 @@
     "@babel/preset-env": "^7.3.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
-    "babel-plugin-dynamic-import-webpack": "^1.1.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
     "eslint": "^5.14.0",
     "eslint-loader": "^2.1.2",
@@ -38,7 +39,8 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.29.4",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {}
 }

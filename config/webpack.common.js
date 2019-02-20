@@ -2,26 +2,18 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');  //打包html的插件
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: {
-        index: './src/index.js',
-        //scrawl_canvas_animate: './src/scrawl_canvas_animate.js'
+        index: './src/index.js'
     },
     output: {
         filename: 'js/[name].[hash].bundle.js',
         chunkFilename: 'js/[name].[hash].bundle.js',
-        path: path.resolve(__dirname, 'docs'),
-        //publicPath: '/assets/',
+        path: path.resolve(__dirname, '../docs')
     },
-    devServer: {
-        contentBase: path.join(__dirname)
-    },
-    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -37,9 +29,9 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
-                        babelrc: false,// 不采用.babelrc的配置
+                        babelrc: false,  // 不采用.babelrc的配置
                         plugins: [
-                            'dynamic-import-webpack'
+                            'syntax-dynamic-import'
                         ]
                     }
                 }
@@ -58,7 +50,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            url: false,
+                            url: true,
                             modules: 'global'
                         }
                     }
@@ -73,9 +65,7 @@ module.exports = {
                             limit: 8192,
                             name (file) {
                                 return '[path][name].[ext]?[hash]';
-                            },
-                            //publicPath: '../',
-                            //useRelativePath: process.env.NODE_ENV === 'production'
+                            }
                         }
                     }
                 ]
@@ -98,16 +88,6 @@ module.exports = {
             }
         ]
     },
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true // set to true if you want JS source maps
-            }),
-            new OptimizeCSSAssetsPlugin({})
-        ]
-    },
     plugins: [
         new HtmlWebpackPlugin({
             minify:{
@@ -119,6 +99,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[hash].css'
-        }),
+        })
     ]
 };

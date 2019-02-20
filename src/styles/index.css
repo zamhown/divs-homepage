@@ -502,7 +502,7 @@ section{
     top: 0;
     left: 0;
     background-color: rgba(107, 85, 64, 0.5);
-    box-shadow: inset 0 0 36px rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0 0 36px rgba(0, 0, 0, 0.7);
 }
 
 #team .detail h2{
@@ -543,10 +543,16 @@ section{
 /* 联系 */
 
 #contact{
-    /* background: url('../../assets/img/contact-bg.jpg') center/cover; */
-    background: rgba(25, 21, 22, 0.8);
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+    /* background: url('../../assets/img/contact-bg.jpg') center/cover; 
+    background: rgba(25, 21, 22, 0.8);*/
+    background: url('../../assets/img/video-overlay-grey.png');
     text-align: center;
+}
+
+#contact .bg{
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
 }
 
 #contact .max-limit{

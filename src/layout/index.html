@@ -229,31 +229,33 @@
             </div>
         </section>
         <section id="contact">
-            <div class="max-limit">
-                <div class="left">
-                    <div class="content">
-                        <p><img src="../../assets/img/logo-revert.svg"></p>
-                        <p class="title sy-putong">深度映像工作室</p>
-                        <address class="can-select sy-xi">
-                            <p>Address：上海市松江区东华大学</p>
-                            <!--<p>Mobile：188-8888-8888</p>-->
-                            <p>Email：deepimaging@sina.com</p>
-                        </address>
+            <div class="bg">
+                <div class="max-limit">
+                    <div class="left">
+                        <div class="content">
+                            <p><img src="../../assets/img/logo-revert.svg"></p>
+                            <p class="title sy-putong">深度映像工作室</p>
+                            <address class="can-select sy-xi">
+                                <p>Address：上海市松江区东华大学</p>
+                                <!--<p>Mobile：188-8888-8888</p>-->
+                                <p>Email：deepimaging@sina.com</p>
+                            </address>
+                        </div>
                     </div>
-                </div>
-                <div class="right">
-                    <form>
-                        <input type="text" placeholder="你的名字" v-model="comment.name" />
-                        <input type="email" placeholder="电子邮箱" v-model="comment.email" />
-                        <input type="tel" placeholder="联系电话" v-model="comment.tel" />
-                        <textarea placeholder="留言内容" v-model="comment.text"></textarea>
-                        <p class="info-area sy-putong">
-                            <span v-if="comment_submit_info_state==1" class="alert">需要输入留言内容哦！</span>
-                            <span v-if="comment_submit_info_state==2" class="success">留言成功，感谢你的留言！^_^</span>
-                            <span v-if="comment_submit_info_state==3" class="error">留言失败，请稍后再试！</span>
-                        </p>
-                        <button class="sy-putong" @click.prevent="addComment()">向 我 们 留 言</button>
-                    </form>
+                    <div class="right">
+                        <form>
+                            <input type="text" placeholder="你的名字" v-model="comment.name" />
+                            <input type="email" placeholder="电子邮箱" v-model="comment.email" />
+                            <input type="tel" placeholder="联系电话" v-model="comment.tel" />
+                            <textarea placeholder="留言内容" v-model="comment.text"></textarea>
+                            <p class="info-area sy-putong">
+                                <span v-if="comment_submit_info_state==1" class="alert">需要输入留言内容哦！</span>
+                                <span v-if="comment_submit_info_state==2" class="success">留言成功，感谢你的留言！^_^</span>
+                                <span v-if="comment_submit_info_state==3" class="error">留言失败，请稍后再试！</span>
+                            </p>
+                            <button class="sy-putong" @click.prevent="addComment()">向 我 们 留 言</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>

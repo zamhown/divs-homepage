@@ -43,9 +43,10 @@ export default {
     paintedEggshell() {
         /*eslint no-console: ["error", { allow: ["log", "info"] }] */
         if (browserType === 'Chrome' || browserType === 'FF') {
-            console.log('%cDEEP%c深度映像工作室\n%c©2017 by DEEP IMAGING VISION STUDIO  ',
+            console.log('%cDEEP%c深度映像工作室%c\n%c  ©2017 by DEEP IMAGING VISION STUDIO  ',
                 'color:white;background:#B5916F;padding:10px;font-size:24px;line-height:44px',
                 'color:white;background:#231F20;padding:10px;font-size:24px;line-height:44px',
+                'padding:0px',
                 'color:white;background:#666;padding:2px;font-size:12px;line-height:20px'
             );
         } else {

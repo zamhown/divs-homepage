@@ -122,7 +122,9 @@ $(function() {
     lottie_animate();
     //移动端canvas聚光灯动画（懒加载）
     if (device.mobile()) {
-        import('./scrawl_canvas_animate')
+        import(
+            /* webpackChunkName: "scrawl_canvas_animate" */
+            './scrawl_canvas_animate')
             .then(scrawl_canvas_animate => scrawl_canvas_animate.default(vm_article.ww, vm_article.wh));
     }
 });

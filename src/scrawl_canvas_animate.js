@@ -1,11 +1,9 @@
 
 import scrawl from './scrawlCanvas';
-/*eslint no-console: ["error", { allow: ["log", "info"] }] */
 
 export default function (ww, wh) {
     window.addEventListener('load', function() {
         scrawl.init();
-        console.log(scrawl);
         init_canvas();
     }, false);
     

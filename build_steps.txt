@@ -15,5 +15,7 @@ npm i -D file-loader
 npm i -D json-loader
 npm i -D html-loader
 npm i -D html-webpack-plugin
-npm i -D babel-plugin-dynamic-import-webpack
+npm i -D babel-plugin-syntax-dynamic-import
 npm i -D babel-eslint
+npm i -D webpack-merge
+npm i -D clean-webpack-plugin
