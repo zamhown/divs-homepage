@@ -227,6 +227,7 @@ footer .right .img-block {
 footer .right .img-block > span {
     display: inline-block;
     background-color: #231F20;
+    width: 102px;
     position: relative;
     left: 0;
     transition-timing-function: ease-out;

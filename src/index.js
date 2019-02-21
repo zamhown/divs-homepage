@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars, no-undef */
+/* eslint-disable no-unused-vars, no-undef, no-console */
 
 import './styles/public.css';
 import './styles/layout.css';
@@ -13,7 +13,6 @@ import vm_footer from './vm_footer';
 import vm_article from './vm_article';
 import vm_remodal from './vm_remodal';
 import about_us_resize from './about_us_resize';
-import lottie_animate from './lottie_animate';
 
 var resizeHooks = [];
 
@@ -118,13 +117,55 @@ $(function() {
     $(window).scroll(function() {
         vm_article.scrollTop = $(this).scrollTop();
     });
-    //GOPRO字体动画
-    lottie_animate();
+    //播放视频
+    if (frame.canPlayVideo() && !device.mobile()) {
+        window.addEventListener('load', function () {
+            const bg_video = document.getElementById('bg-video');
+            const artwork_2_video = document.getElementById('artwork-2-video');
+            bg_video.muted = true;  // Chrome的autoplay政策在2018年4月做了更改，只有muted autoplay始终被允许
+            bg_video.load();
+            artwork_2_video.muted = true;
+            artwork_2_video.load();
+            setInterval(()=>{
+                try {
+                    bg_video.play().catch(err => {console.log(err);});
+                    artwork_2_video.play().catch(err => {});
+                } catch(err) {/**/}
+            }, 2000);
+        }, false);  // 知识点：useCapture=false：如果将useCapture设置为true，则侦听器只在事件流的捕获阶段处理事件，而不在目标或冒泡阶段处理事件。如果useCapture为false，则侦听器只在目标或冒泡阶段处理事件
+    }
+    //GOPRO字体动画（懒加载）
+    if (frame.canPlayBodymovin()) {
+        import(
+            /* webpackChunkName: "lottie_animate" */
+            './lottie_animate')
+            .then(lottie_animate => {
+                lottie_animate.default();
+            });
+    } else if (frame.canPlayVideo() && !device.mobile()) {
+        window.addEventListener('load', function () {
+            const artwork_1_video = document.getElementById('artwork-1-video');
+            artwork_1_video.muted = true;
+            artwork_1_video.load();
+            setInterval(()=>{
+                try {
+                    artwork_1_video.play().catch(err => {});
+                } catch(err) {/**/}
+            }, 2000);
+        }, false);
+    }
     //移动端canvas聚光灯动画（懒加载）
-    if (device.mobile()) {
+    if (device.mobile() && frame.canPlayCanvas()) {
         import(
             /* webpackChunkName: "scrawl_canvas_animate" */
             './scrawl_canvas_animate')
-            .then(scrawl_canvas_animate => scrawl_canvas_animate.default(vm_article.ww, vm_article.wh));
+            .then(scrawl_canvas_animate => {
+                const sca = scrawl_canvas_animate.default;
+                sca.init();
+                sca.draw(vm_article.ww, vm_article.wh);
+                resizeHooks.push(function(ww, wh) {
+                    sca.draw(ww, wh);
+                });
+            });
     }
 });

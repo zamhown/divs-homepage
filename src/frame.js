@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars, no-undef */
+
 //判断浏览器种类
 function browser() {
     if (!!window.ActiveXObject || 'ActiveXObject' in window)
@@ -39,6 +41,18 @@ export default {
     root_font_size: 16,
     browserType: browserType,
     weChat: isWeChat(),
+    //是否可以播放canvas动画
+    canPlayCanvas: function () {
+        return Modernizr.canvas;
+    },
+    //是否可以播放bodymovin动画
+    canPlayBodymovin: function () {
+        return this.browserType !== 'IE' && this.browserType !== 'Edge';
+    },
+    //是否可以播放视频
+    canPlayVideo: function () {
+        return Modernizr.video;
+    },
     //彩蛋
     paintedEggshell() {
         /*eslint no-console: ["error", { allow: ["log", "info"] }] */

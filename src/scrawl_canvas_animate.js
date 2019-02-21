@@ -1,19 +1,40 @@
 
 import scrawl from './scrawlCanvas';
 
-export default function (ww, wh) {
-    window.addEventListener('load', function() {
+export default {
+    init () {
         scrawl.init();
-        init_canvas();
-    }, false);
+    },
     
-    var init_canvas = function() {
+    radialGradient: null,
+    gradient1: null,
+    gradient2: null,
+    spotlight: null,
+    light1: null,
+    light2: null,
+    animation: null,
+
+    draw (ww, wh) {
+        if (this.radialGradient) {
+            // 清空
+            this.animation.kill();
+            this.radialGradient.remove();
+            this.gradient1.remove();
+            this.gradient2.remove();
+            scrawl.deleteEntity([
+                'spotlightBlock',
+                'lightBlock1',
+                'lightBlock2'
+            ]);
+            this.radialGradient = null;
+        }
+
         var here = { x: 0, y: 0 };
         var r = 100;
         var animationState = 0;
         var animationDirection = true;
     
-        var radialGradient = scrawl.makeRadialGradient({
+        this.radialGradient = scrawl.makeRadialGradient({
             name: 'spotlight',
             startRadius: 0,
             endRadius: r,
@@ -29,7 +50,7 @@ export default function (ww, wh) {
             }]
         });
     
-        var gradient1 = scrawl.makeGradient({
+        this.gradient1 = scrawl.makeGradient({
             name: 'light1',
             startX: 0,
             startY: 0,
@@ -50,11 +71,12 @@ export default function (ww, wh) {
             }]
         });
     
-        var gradient2 = gradient1.clone({
+        this.gradient2 = this.gradient1.clone({
             name: 'light2'
         });
     
-        var spotlight = scrawl.makeBlock({
+        this.spotlight = scrawl.makeBlock({
+            name: 'spotlightBlock',
             fillStyle: 'spotlight',
             method: 'fill',
             width: ww,
@@ -62,23 +84,26 @@ export default function (ww, wh) {
             order: 1
         });
     
-        var light1 = spotlight.clone({
+        this.light1 = this.spotlight.clone({
+            name: 'lightBlock1',
             fillStyle: 'light1'
         });
     
-        var light2 = spotlight.clone({
+        this.light2 = this.spotlight.clone({
+            name: 'lightBlock2',
             fillStyle: 'light2'
         });
     
-        scrawl.makeAnimation({
+        const self = this;
+        this.animation = scrawl.makeAnimation({
             fn: function() {
                 changeParam();
     
-                spotlight.set({ width: ww, height: wh });
-                light1.set({ width: ww, height: wh });
-                light2.set({ width: ww, height: wh });
+                self.spotlight.set({ width: ww, height: wh });
+                self.light1.set({ width: ww, height: wh });
+                self.light2.set({ width: ww, height: wh });
     
-                radialGradient.set({
+                self.radialGradient.set({
                     startX: here.x,
                     startY: here.y,
                     endX: here.x,
@@ -87,7 +112,7 @@ export default function (ww, wh) {
                 });
     
                 var v1 = getPerpendicularVector(here.x, here.y);
-                gradient1.set({
+                self.gradient1.set({
                     startX: v1[0] * r,
                     startY: v1[1] * r,
                     endX: -v1[0] * r,
@@ -95,7 +120,7 @@ export default function (ww, wh) {
                 });
     
                 var v2 = getPerpendicularVector(here.x - ww, here.y);
-                gradient2.set({
+                self.gradient2.set({
                     startX: v2[0] * r + ww,
                     startY: v2[1] * r,
                     endX: -v2[0] * r + ww,
@@ -131,5 +156,5 @@ export default function (ww, wh) {
             var v = [x / num, y / num];
             return [-v[1], v[0]];
         }
-    };
-}
+    }
+};

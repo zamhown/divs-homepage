@@ -61,6 +61,7 @@ section{
     position: relative;
     background-color: rgba(0,0,0,0.35);
     transition: none;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px -20px 20px inset;
 }
 
 #screen1 .left{

@@ -17,9 +17,8 @@
     <script src="//cdn.staticfile.org/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script src="//cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
     <script src="//cdn.staticfile.org/device.js/0.2.7/device.min.js"></script>
-    <!--<script src="//cdn.staticfile.org/modernizr/2.8.3/modernizr.min.js"></script>-->
+    <script src="//cdn.staticfile.org/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="//cdn.staticfile.org/vue/2.2.6/vue.min.js"></script>
-    <script src="//cdn.staticfile.org/bodymovin/4.6.1/bodymovin_light.min.js"></script>
     <script src="//cdn.staticfile.org/remodal/1.1.1/remodal.min.js"></script>
 </head>
 <body>
@@ -49,9 +48,9 @@
     <article>
         <div id="video-container" :style="whStyle"> <!--v-show="isMobile || scrollTop<wh"-->
             <img src="../../assets/img/bg-video-poster.jpg">
-            <canvas v-if="isMobile" id="bg-canvas" :style="whStyle" :width="inner_ww" :height="wh"></canvas>
-            <video v-if="!isMobile" id="bg-video" :style="bgVideoStyle" src="../../assets/video/banner.mp4" poster="../../assets/img/bg-video-poster.jpg"
-            autoplay loop muted preload="auto" @loadedmetadata="bgVideoInit" @progress="bgVideoLoadProgress"></video>
+            <canvas v-if="isMobile && canPlayCanvas" id="bg-canvas" :width="inner_ww" :height="wh"></canvas>
+            <video v-if="!isMobile && canPlayVideo" id="bg-video" :style="bgVideoStyle" src="../../assets/video/banner.mp4" 
+            loop muted preload="none" @loadedmetadata="bgVideoInit" @progress="bgVideoLoadProgress"></video><!--poster="../../assets/img/bg-video-poster.jpg"-->
         </div>
         <div v-if="!isMobile" id="bg-video-progress" class="video-progress" :style="{width:bg_video_progress+'%'}"></div>
         <section id="screen1" :style="[whStyle,screen1Style]">
@@ -87,21 +86,21 @@
                     <a href="https://www.bilibili.com/video/av11437878" class="artwork artwork-1 level2">
                         <span class="content-frame">
                             <img src="../../assets/img/artwork-1.jpg">
-                            <video v-if="!canPlayBodymovin" :class="{'hide':!isTablet}"
+                            <video id="artwork-1-video" v-if="!canPlayBodymovin && !isMobile && canPlayVideo" :class="{'hide':!isTablet}"
                             src="../../assets/video/artwork-1.mp4" poster="../../assets/img/artwork-1.jpg"
-                            autoplay loop muted preload="auto" @loadedmetadata="artworkVideoInit(0,$event)" @progress="artworkVideoLoadProgress(0,$event)"></video>
+                            preload="none" loop muted @loadedmetadata="artworkVideoInit(0,$event)" @progress="artworkVideoLoadProgress(0,$event)"></video>
                             <span v-if="canPlayBodymovin" class="svg-animation svg-animation-2"></span>
                             <span v-if="canPlayBodymovin" class="svg-animation svg-animation-1"></span>
                         </span>
-                        <span v-if="!canPlayBodymovin" class="video-progress" :style="{width:artwork_video_progress[0]+'%'}"></span>
+                        <span v-if="!canPlayBodymovin && canPlayVideo" class="video-progress" :style="{width:artwork_video_progress[0]+'%'}"></span>
                         <span><span class="artist">HEYIYUN</span><span class="title">GO PRO 可视化音乐</span></span>
                     </a>
                     <div class="level2">
                         <a href="https://www.bilibili.com/video/av11437417" class="artwork artwork-2 level3">
                             <span class="content-frame">
                                 <img src="../../assets/img/artwork-2.jpg">
-                                <video v-if="!isMobile" :class="{'hide':!isTablet}" src="../../assets/video/artwork-2.mp4" poster="../../assets/img/artwork-2.jpg"
-                                autoplay loop muted preload="auto" @loadedmetadata="artworkVideoInit(1,$event)" @progress="artworkVideoLoadProgress(1,$event)"></video>
+                                <video id="artwork-2-video" v-if="!isMobile && canPlayVideo" :class="{'hide':!isTablet}" src="../../assets/video/artwork-2.mp4"
+                                loop muted preload="none" @loadedmetadata="artworkVideoInit(1,$event)" @progress="artworkVideoLoadProgress(1,$event)"></video><!--poster="../../assets/img/artwork-2.jpg"-->
                             </span>
                             <span class="video-progress" :style="{width:artwork_video_progress[1]+'%'}"></span>
                             <span><span class="artist">HEYIYUN</span><span class="title">吉利汽车UI效果动画</span></span>

@@ -57,9 +57,17 @@ var vm_article = new Vue({
         isMobileView: function () {
             return this.ww <= 500;
         },
+        //是否可以播放canvas动画
+        canPlayCanvas: function () {
+            return frame.canPlayCanvas();
+        },
         //是否可以播放bodymovin动画
         canPlayBodymovin: function () {
-            return this.browserType !== 'IE' && this.browserType !== 'Edge';
+            return frame.canPlayBodymovin();
+        },
+        //是否可以播放视频
+        canPlayVideo: function () {
+            return frame.canPlayVideo();
         },
         whStyle: function () {
             return {height: this.wh + 'px'};
@@ -189,6 +197,7 @@ var vm_article = new Vue({
                     }
                     if (this.bg_video_progress === 100) {
                         $('#bg-video-progress').fadeOut();
+                        // bg_video.play();
                     }
                 }
             }
@@ -210,6 +219,7 @@ var vm_article = new Vue({
                     }
                     if (this.artwork_video_progress[index] === 100) {
                         $('.artwork-' + (index + 1) + ' .video-progress').fadeOut();
+                        // artwork_video.play();
                     }
                 }
             }

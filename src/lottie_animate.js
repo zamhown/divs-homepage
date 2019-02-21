@@ -2,12 +2,13 @@
 
 import go1 from '../assets/animation/gopro-1.json';
 import go2 from '../assets/animation/gopro-2.json';
+import lottie from 'lottie-web/build/player/lottie_light';
 
 export default function () {
     //GOPRO字体动画，两段动画交替播放
     var $container1 = $('#artworks .artwork-1 .svg-animation-1');
     var $container2 = $('#artworks .artwork-1 .svg-animation-2');
-    var an1 = bodymovin.loadAnimation({
+    var an1 = lottie.loadAnimation({
         //path: 'assets/animation/gopro-1.json',
         animationData: go1,
         loop: false,
@@ -15,7 +16,7 @@ export default function () {
         renderer: 'svg',
         container: $container1[0]
     });
-    var an2 = bodymovin.loadAnimation({
+    var an2 = lottie.loadAnimation({
         //path: 'assets/animation/gopro-2.json',
         animationData: go2,
         loop: true,

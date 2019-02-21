@@ -19,3 +19,5 @@ npm i -D babel-plugin-syntax-dynamic-import
 npm i -D babel-eslint
 npm i -D webpack-merge
 npm i -D clean-webpack-plugin
+
+npm i lottie-web
