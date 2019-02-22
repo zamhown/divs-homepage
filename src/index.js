@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars, no-undef, no-console */
+/* eslint-disable no-unused-vars, no-undef */
 
 import './styles/public.css';
 import './styles/layout.css';
@@ -128,7 +128,7 @@ $(function() {
             artwork_2_video.load();
             setInterval(()=>{
                 try {
-                    bg_video.play().catch(err => {console.log(err);});
+                    bg_video.play().catch(err => {});
                     artwork_2_video.play().catch(err => {});
                 } catch(err) {/**/}
             }, 2000);
@@ -136,9 +136,7 @@ $(function() {
     }
     //GOPRO字体动画（懒加载）
     if (frame.canPlayBodymovin()) {
-        import(
-            /* webpackChunkName: "lottie_animate" */
-            './lottie_animate')
+        import(/* webpackChunkName: "lottie_animate" */ './lottie_animate')
             .then(lottie_animate => {
                 lottie_animate.default();
             });
@@ -156,15 +154,18 @@ $(function() {
     }
     //移动端canvas聚光灯动画（懒加载）
     if (device.mobile() && frame.canPlayCanvas()) {
-        import(
-            /* webpackChunkName: "scrawl_canvas_animate" */
-            './scrawl_canvas_animate')
+        import(/* webpackChunkName: "scrawl_canvas_animate" */ './scrawl_canvas_animate')
             .then(scrawl_canvas_animate => {
                 const sca = scrawl_canvas_animate.default;
                 sca.init();
                 sca.draw(vm_article.ww, vm_article.wh);
+                var old_ww = vm_article.ww, old_wh = vm_article.wh;
                 resizeHooks.push(function(ww, wh) {
-                    sca.draw(ww, wh);
+                    if (ww != old_ww || wh != old_wh) {
+                        sca.draw(ww, wh);
+                        old_ww = ww;
+                        old_wh = wh;
+                    }
                 });
             });
     }

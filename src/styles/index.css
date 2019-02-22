@@ -547,6 +547,7 @@ section{
     /* background: url('../../assets/img/contact-bg.jpg') center/cover; 
     background: rgba(25, 21, 22, 0.8);*/
     background: url('../../assets/img/video-overlay-grey.png');
+    background-repeat: repeat;
     text-align: center;
 }
 
