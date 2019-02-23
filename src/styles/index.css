@@ -729,10 +729,6 @@ section{
         margin-left: 92px;
     }
 
-    #team .member-container{
-        width: 49.9%;
-    }
-
     #team .detail h2{
         margin: 30px;
     }
@@ -751,6 +747,10 @@ section{
 }
 
 @media (max-width: 900px) and (min-width: 501px) {
+    #team .member-container{
+        width: 49.9%;
+    }
+
     #contact .max-limit{
         width: 750px;
     }
