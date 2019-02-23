@@ -57,7 +57,7 @@ module.exports = {
                 ]
             },
             {
-                test: /(video-overlay-grey|icon256)\.png$/,
+                test: /icon256\.png$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -71,7 +71,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|mp4|ico)$/,
-                exclude: /(video-overlay-grey|icon256)\.png$/,
+                exclude: /icon256\.png$/,
                 use: [
                     {
                         loader: 'url-loader',
