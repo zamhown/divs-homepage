@@ -123,15 +123,11 @@ $(function() {
             const bg_video = document.getElementById('bg-video');
             const artwork_2_video = document.getElementById('artwork-2-video');
             bg_video.muted = true;  // Chrome的autoplay政策在2018年4月做了更改，只有muted autoplay始终被允许
+            bg_video.addEventListener('canplay', () => bg_video.play());
             bg_video.load();
             artwork_2_video.muted = true;
+            artwork_2_video.addEventListener('canplay', () => artwork_2_video.play());
             artwork_2_video.load();
-            setInterval(()=>{
-                try {
-                    bg_video.play().catch(err => {});
-                    artwork_2_video.play().catch(err => {});
-                } catch(err) {/**/}
-            }, 2000);
         }, false);  // 知识点：useCapture=false：如果将useCapture设置为true，则侦听器只在事件流的捕获阶段处理事件，而不在目标或冒泡阶段处理事件。如果useCapture为false，则侦听器只在目标或冒泡阶段处理事件
     }
     //GOPRO字体动画（懒加载）
