@@ -1,20 +1,19 @@
 npm init
-npm i -D webpack
-npm i -D webpack-cli
-npm i -D webpack-dev-server
-npm i -D eslint
-eslint --init
-npm i -D eslint-loader
+npm i -D webpack webpack-cli
+npm i -D html-webpack-plugin
 npm i -D babel-loader @babel/core @babel/preset-env
 npm i -D css-loader
 npm i -D mini-css-extract-plugin
 npm i -D uglifyjs-webpack-plugin
 npm i -D optimize-css-assets-webpack-plugin
 npm i -D url-loader
+npm i -D webpack-dev-server
+npm i -D eslint
+eslint --init
+npm i -D eslint-loader
 npm i -D file-loader
 npm i -D json-loader
 npm i -D html-loader
-npm i -D html-webpack-plugin
 npm i -D babel-plugin-syntax-dynamic-import
 npm i -D babel-eslint
 npm i -D webpack-merge
