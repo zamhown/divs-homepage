@@ -7,16 +7,14 @@ npm i -D mini-css-extract-plugin
 npm i -D uglifyjs-webpack-plugin
 npm i -D optimize-css-assets-webpack-plugin
 npm i -D url-loader
-npm i -D webpack-dev-server
-npm i -D eslint
-eslint --init
-npm i -D eslint-loader
 npm i -D file-loader
-npm i -D json-loader
 npm i -D html-loader
+npm i -D clean-webpack-plugin
+npm i -D eslint eslint-loader
+eslint --init
+npm i -D webpack-merge
+npm i -D webpack-dev-server
 npm i -D babel-plugin-syntax-dynamic-import
 npm i -D babel-eslint
-npm i -D webpack-merge
-npm i -D clean-webpack-plugin
 
 npm i lottie-web

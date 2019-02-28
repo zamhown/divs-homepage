@@ -69,6 +69,7 @@ export default {
         if(browserType === 'Edge') {
             console.info('Windows 10 is awesome, right? -From the developer');
         }
+        console.info('关于本页的前端实现细节，可参考 https://github.com/zamhown/divs-homepage 的README部分。');
     },
     //获得滚动条宽度
     getScrollbarWidth() {
