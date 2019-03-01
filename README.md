@@ -2,9 +2,9 @@
 # 深度映像工作室官网首页
 链接：[https://zamhown.github.io/divs-homepage](https://zamhown.github.io/divs-homepage)  
 
-过年期间又拾起了两年前的毕业设计，当时是给学院的媒体工作室做了个官网，还包括一个 ASP.NET MVC 实现的作品管理系统和交流社区。  
+本项目是我在2017年的本科毕业设计的一部分，当时是给学院的媒体工作室做了个官网，还包括一个 ASP.NET MVC 实现的作品管理系统和交流社区。  
 
-媒体工作室的主要业务是拍视频、视频后期处理和平面设计，以实践教学为宗旨（并以揽私活为生），所以官网的首页部分需要做得炫酷一点。想当年为了答辩租了两个月服务器，一月120，还是有点小贵的。毕业以后由于没人续费，这个官网和整个作品社区就凉了……这次我把首页部分单拎了出来，用webpack优化了一遍传到了GitHub Pages。虽然是静态的，但终于有一个永久免费的服务器了。  
+> 这个媒体工作室的主要业务是拍视频、视频后期处理和平面设计，以实践教学为宗旨（并以揽私活维持生计），所以官网的首页部分需要做得炫酷一点。想当年为了答辩租了两个月服务器，一月120，还是有点小贵的。毕业以后由于没人续费，这个官网和整个作品社区就凉了……这次我把首页部分单拎了出来，用webpack优化了一遍传到了GitHub Pages。虽然是静态的，但终于有一个永久免费的服务器了。  
 
 这次趁热把以前的东西总结一下，不然又会像这次一样一上手什么都忘了。先列举下该页面主要用到的技术：  
 
@@ -21,51 +21,56 @@
 
 ## 目录
 **第一部分 响应式设计与浏览器兼容**  
-[一、概览](#一、概览)  
-[二、响应式设计](#二、响应式设计)  
-[三、浏览器兼容](#三、浏览器兼容)  
+[一、概览](#一概览)  
+[二、响应式设计](#二响应式设计)  
+[三、浏览器兼容](#三浏览器兼容)  
 
 **第二部分 效果实现与优化**    
-[四、视频部分](#四、视频部分)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1&nbsp;&nbsp;视频的动态加载](#4.1&nbsp;&nbsp;视频的动态加载)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2&nbsp;&nbsp;视频的加载进度条](#4.2&nbsp;&nbsp;视频的加载进度条)  
-[五、Lottie动画部分](#五、Lottie动画部分)  
-[六、Canvas动画部分](#六、Canvas动画部分)  
-[七、自定义字体与拆分字体](#七、自定义字体与拆分字体)  
-[八、其他效果与彩蛋](#八、其他效果与彩蛋)  
+[四、视频部分](#四视频部分)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.1&nbsp;&nbsp;视频的动态加载](#41视频的动态加载)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2&nbsp;&nbsp;视频的加载进度条](#42视频的加载进度条)  
+[五、Lottie动画部分](#五Lottie动画部分)  
+[六、Canvas动画部分](#六Canvas动画部分)  
+[七、自定义字体与拆分字体](#七自定义字体与拆分字体)  
+[八、其他效果与彩蛋](#八其他效果与彩蛋)  
 
 **第三部分 Webpack配置、打包与懒加载**  
-[九、Webpack与各loader配置](#九、Webpack与各loader配置)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.1&nbsp;&nbsp;打包js文件](#9.1&nbsp;&nbsp;打包js文件)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.2&nbsp;&nbsp;将ES6以上的语法转译为ES5](#9.2&nbsp;&nbsp;将ES6以上的语法转译为ES5)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.3&nbsp;&nbsp;打包HTML文件（一）](#9.3&nbsp;&nbsp;打包HTML文件（一）)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.4&nbsp;&nbsp;打包CSS文件](#9.4&nbsp;&nbsp;打包CSS文件)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.5&nbsp;&nbsp;优化JS和CSS文件](#9.5&nbsp;&nbsp;优化JS和CSS文件)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.6&nbsp;&nbsp;打包图片和其他资源文件](#9.6&nbsp;&nbsp;打包图片和其他资源文件)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.7&nbsp;&nbsp;打包HTML文件（二）](#9.7&nbsp;&nbsp;打包HTML文件（二）)  
-&nbsp;&nbsp;&nbsp;&nbsp;[9.8&nbsp;&nbsp;其他配置](#9.8&nbsp;&nbsp;其他配置)  
-[十、开发环境配置与拆分](#十、开发环境配置与拆分)  
-&nbsp;&nbsp;&nbsp;&nbsp;[10.1&nbsp;&nbsp;配置拆分](#10.1&nbsp;&nbsp;配置拆分)  
-&nbsp;&nbsp;&nbsp;&nbsp;[10.2&nbsp;&nbsp;开发服务器配置](#10.2&nbsp;&nbsp;开发服务器配置)  
-&nbsp;&nbsp;&nbsp;&nbsp;[10.3&nbsp;&nbsp;模块热替换配置](#10.3&nbsp;&nbsp;模块热替换配置)  
-[十一、模块懒加载](#十一、模块懒加载)  
-[十二、其他减少请求数和压缩资源大小的方法](#十二、其他减少请求数和压缩资源大小的方法)  
+[九、Webpack与各loader配置](#九Webpack与各loader配置)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.1&nbsp;&nbsp;打包js文件](#91打包js文件)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.2&nbsp;&nbsp;将ES6以上的语法转译为ES5](#92将ES6以上的语法转译为ES5)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.3&nbsp;&nbsp;打包HTML文件（一）](#93打包HTML文件一)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.4&nbsp;&nbsp;打包CSS文件](#94打包CSS文件)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.5&nbsp;&nbsp;优化JS和CSS文件](#95优化JS和CSS文件)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.6&nbsp;&nbsp;打包图片和其他资源文件](#96打包图片和其他资源文件)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.7&nbsp;&nbsp;打包HTML文件（二）](#97打包HTML文件二)  
+&nbsp;&nbsp;&nbsp;&nbsp;[9.8&nbsp;&nbsp;其他配置](#98其他配置)  
+[十、开发环境配置与拆分](#十开发环境配置与拆分)  
+&nbsp;&nbsp;&nbsp;&nbsp;[10.1&nbsp;&nbsp;配置拆分](#101配置拆分)  
+&nbsp;&nbsp;&nbsp;&nbsp;[10.2&nbsp;&nbsp;开发服务器配置](#102开发服务器配置)  
+&nbsp;&nbsp;&nbsp;&nbsp;[10.3&nbsp;&nbsp;模块热替换配置](#103模块热替换配置)  
+[十一、模块懒加载](#十一模块懒加载)  
+[十二、其他减少请求数和压缩资源大小的方法](#十二其他减少请求数和压缩资源大小的方法)  
 
 ## 一、概览
 
 我们先整体地看一下成品页面。首先，在PC端第一屏是一个全景视频做背景（工作室作品《It's Time》的节选），Logo和主菜单放在上方左右侧。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/1.gif)  
 
 向下拉进入第二屏时，全景视频逐渐变暗，Logo和主菜单部分变黑并形成一个Header。第二屏是“作品”部分，最左边的作品通过svg动画（lottie-web库）自动预览，右上方的作品当鼠标移入就使用视频模式预览。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/2.gif)  
 
 下面是“关于我们”部分，有一段中规中矩的文字展示，鼠标移入合影会触发css强调动画。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/3.gif)  
 
 再下面是“团队”，有六位成员的照片和简介。如果鼠标不移入这一部分，成员简介将随机展示；如果鼠标移入其中一张照片，则展示对应成员的简介，并停止随机展示。展示简介时，成员照片呈现毛玻璃和下陷效果。画面左边斜线填充的矩形会随着滚动条进行相对微动。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/4.gif)  
 
 最后是“联系”部分。背景仍为第一屏的视频，但是叠加了一层铁丝网一样的效果，画面也更加黯淡。前景左部是Logo和联系方式，右部是简易留言板。鼠标移到“向我们留言”按钮时会有一个hover效果。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/5.gif)  
 
 
@@ -78,6 +83,7 @@
 在技术上，响应式网页设计通常采用css媒体查询、JavaScript的屏幕分辨率监测、css的流动布局及百分比布局、弹性图片、以及css3新增的[弹性盒子布局（Flexible Box Layout）](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)和[网格布局（Grid Layout）](https://css-tricks.com/snippets/css/complete-guide-grid/)来实现。目前也有许多前端框架和组件库可以做到这一点，从最老派的Bootstrap到最新潮的Ant Design都有响应式支持。  
 
 在效果上，我希望当用户在PC上慢慢调整浏览器宽度时，页面可以流畅地改变布局。以“关于我们”为例，有针对PC宽屏、PC普通屏、平板、手机四种宽度下的四种布局：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/6.gif)  
 *缩窗口大法，事实上我经常这样盘网页*  
 
@@ -98,14 +104,16 @@
 
 ### 2.  移除所有背景视频，改用canvas动画
 两年前开发这个页面的时候，移动端对背景视频的支持还很不友好，体验也不统一。有的浏览器对视频优化过度，用户一点击视频就会自动弹出小窗播放，控制栏也去不掉。除此之外，用户的流量也需要考虑，出于道义不能假设用户用手机查看网页时总是希望加载背景视频的。因此这个页面在移动端不加载也不显示视频，第一屏用canvas动画代替：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/7.gif)  
 
-这是一个聚光灯效果叠加在背景图片上，弥补了去掉视频后第一屏的动感的不足。这个动画的实现将在[第六节](#六、Canvas动画部分)简要介绍。  
+这是一个聚光灯效果叠加在背景图片上，弥补了去掉视频后第一屏的动感的不足。这个动画的实现将在[第六节](#六Canvas动画部分)简要介绍。  
 
 ### 3.  页面由横宽到竖长带来的版式调整
 PC端屏幕横宽，信息量大；移动端屏幕竖长，信息量小。如果不考虑分辨率大小，长短边的互换也会为版式调整提出很复杂的要求。下面举两个版式调整的例子。  
 
 首先是PC端展开的主菜单在移动端收进汉堡按钮，这个设计也是老生常谈了，就连苹果官网也不能免俗。这个页面里的Header主要有PC、平板、手机三种模式。除了点击事件的捕获，所有效果都可以通过css实现。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/8.gif)  
 
 第二个是之前提过的Flex Box的应用。“作品”部分的展示框架使用了Flex Box，由于是两年前的实现，现在看来使用Grid Layout要更合适。4:2:1:1的布局可以很方便适配手机端。  
@@ -119,12 +127,15 @@ PC端屏幕横宽，信息量大；移动端屏幕竖长，信息量小。如果
 
 ### 4.  网页页脚部分的改变
 页脚部分除了版式的改变以外，还有两个小细节。第一是微信公众号二维码的展现，在PC端鼠标移到微信图标上就会冒出一个带二维码的气泡：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qrc-1.png)  
 
 但移动端明显不太适合这样做。我的处理方式是弹出一个模态框解决。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qrc-2.png)  
 
 如果是在微信里打开这个网页，由于可以长按图片进行二维码识别，模态框的引导语就变成了这样：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qrc-3.jpg)  
 
 第二处是QQ。在PC端网页上，点击QQ图标后会自动调起QQ以供进行临时会话，超链接是这样的：  
@@ -138,6 +149,7 @@ mqqwpa://im/chat?chat_type=wpa&uin=<你的客服QQ号>&version=1&src_type=web&we
 ```
 
 而在微信里则会把这个链接屏蔽，对应的处理是弹出一条提示：
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qq.jpg)  
 
 ## 三、浏览器兼容
@@ -160,6 +172,7 @@ mqqwpa://im/chat?chat_type=wpa&uin=<你的客服QQ号>&version=1&src_type=web&we
 ```
 
 可能很多人发现用移动版Chrome进入B站以后，地址栏永远是粉色的。这个`<meta>`的作用就是如此：自定义Chrome地址栏的颜色。这里我设成了黑色，有助于获得更有整体性的视觉体验。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/chrome.jpg)  
 
 
@@ -171,9 +184,11 @@ mqqwpa://im/chat?chat_type=wpa&uin=<你的客服QQ号>&version=1&src_type=web&we
 这是iOS设备私有属性，添加这个标签后，在Safari上使用“添加到主屏”按钮将网站添加到主屏幕时采用设定好的图标。这个在我专栏之前的文章中也有提到：[APP图标设计小技巧：在iOS上快速获得APP图标的真实预览图](https://zhuanlan.zhihu.com/p/28482598)。  
 
 效果如下（图标在右下角）：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/pad-1.png)  
 
 而且图标也会出现在Safari的个人收藏中，如果网站被添加到个人收藏的话。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/pad-2.png)  
 
 ### 4.  Safari主屏幕入口优化
@@ -183,11 +198,13 @@ mqqwpa://im/chat?chat_type=wpa&uin=<你的客服QQ号>&version=1&src_type=web&we
 ```
 
 第一个`<meta>`标签表示用户从主屏幕快捷方式（上文设定的那个）打开网页后默认全屏显示，第二个`<meta>`标签和Chrome那个作用相近，全屏显示时上方状态栏设定为黑色。效果如下：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/full-screen.png)  
 *全屏显示网页效果拔群*  
 
 ### 5.  IE11和Edge上的处理
-E11和Edge其实已经很好了，基本上兼容所有主流特性，有时还会有惊喜。但是这个页面用到的svg动画（通过lottie-web库播放，在[第五节](#五、Lottie动画部分)  会介绍）在两年前不被支持，这可能是lottie-web库的局限。所以只能“优雅降级”，用视频来代替动画。  
+E11和Edge其实已经很好了，基本上兼容所有主流特性，有时还会有惊喜。但是这个页面用到的svg动画（通过lottie-web库播放，在[第五节](#五Lottie动画部分)  会介绍）在两年前不被支持，这可能是lottie-web库的局限。所以只能“优雅降级”，用视频来代替动画。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/9.gif)  
 
 ## 四、视频部分
@@ -200,7 +217,7 @@ E11和Edge其实已经很好了，基本上兼容所有主流特性，有时还�
 </video>
 ```
 
-属性就不细说了，目前的设置会在页面加载后即载入整个视频，并自动播放、无限循环且静音，这个设置在PC端是没问题的。但是在[第二节](#二、响应式设计)响应式设计中说到，移动端的页面放弃了所有背景视频，所以我们就有了动态加载视频的需求。为了阻止页面在移动端自动请求这个视频，有两种方案：  
+属性就不细说了，目前的设置会在页面加载后即载入整个视频，并自动播放、无限循环且静音，这个设置在PC端是没问题的。但是在[第二节](#二响应式设计)响应式设计中说到，移动端的页面放弃了所有背景视频，所以我们就有了动态加载视频的需求。为了阻止页面在移动端自动请求这个视频，有两种方案：  
 
 - `<video>`标签不写在html里，而是通过js在判断设备后动态添加标签至DOM；
 - `<video>`标签写在html里，通过js在判断设备后调用视频对象的`load()`方法加载。
@@ -227,6 +244,7 @@ if (Modernizr.video() && !device.mobile()) {
 
 ### 4.2&nbsp;&nbsp;视频的加载进度条
 为了提醒用户等待背景视频又不至于打扰到用户，我模仿了很多国外网站的做法把loading进度条放到了页面顶端，并加了阴影突出层次感。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/10.gif)  
 
 这涉及到响应`<video>`标签的`onloadedmetadata`和`onprogress`事件。前者在成功获取视频元数据（包括视频时长等）时触发，后者在已加载视频数据的长度发生更新时触发。通过第一个事件取到视频总长度，通过第二个事件取到视频已加载的长度即可。我是用Vue来绑定事件的，代码片段如下：
@@ -262,9 +280,11 @@ bgVideoLoadProgress: function (e) {  // 绑定onprogress事件
 ## 五、Lottie动画部分
 
 页面中“作品”部分最显眼的就是一个SVG形式的动画，作为一个MG动画视频的预览，看上去比原视频还要清晰而锐利：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/11.gif)  
 
 这其实是借助[Lottie-web](https://github.com/airbnb/lottie-web)库实现的。Lottie是Airbnb推出的动效神器，简单来说就是可以把AE（Adobe After Effects）做出来的动画转化成json文件，并可以在网页端或移动端直接播放！有了AE这一业界顶尖的2D动画工具之一加持，动效什么的真的不是问题了。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/lottie-example.gif)  
 *官方的使用范例*  
 
@@ -312,18 +332,22 @@ an1.play();
 
 ## 六、Canvas动画部分
 
-[第二节](#二、响应式设计)提到过，为了在移动端去掉视频之后保持第一屏的动感，我使用了canvas动画。效果是这样：  
+[第二节](#二响应式设计)提到过，为了在移动端去掉视频之后保持第一屏的动感，我使用了canvas动画。效果是这样：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/7.gif)  
 
 这里借助了一个canvas动画库实现：[Scrawl-canvas](https://github.com/KaliedaRik/Scrawl-canvas)。但事实上我不是很推荐这个库，第一用的人比较少，第二比较老旧（在npm上找不着），但真的很好上手，自成体系，你能想到的二维动画功能都有涵盖。如果实在找不到什么东西用就可以用这个。  
 
 [Scrawl-canvas的官网](http://scrawl.rikweb.org.uk/)上有很多范例，文档也还算齐全。千万别被它官网的设计风格吓到，人家是故意复古的……  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/scrawl.png)  
 
 这个聚光灯动画并不直接包括在官方Demo里，只能找到探照灯效果（只有鼠标附近发出圆形的光，其他地方都是暗的）：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/12.gif)  
 
 这个时候就需要一点想象力了：探照灯效果只是一个径向渐变的半透明图层叠加在图片上，这个图层和鼠标一起移动；那么聚光灯不就是**两个线性渐变和一个径向渐变的叠加**么？  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/14.gif)  
 *正式开发之前做的Demo*  
 
@@ -331,7 +355,9 @@ an1.play();
 
 ## 七、自定义字体与拆分字体
 这个页面里几乎所有有字的地方都使用了不同粗细的思源黑体而不是系统自带字体。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/font-1.png)  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/font-2.png)  
 
 但是如果把这些思源黑体文件全部打包到网页资源中，这个大小是不能忍受的。这也可能是大多数网页不常用自定义字体的原因之一。这个时候一个很自然的想法就出现了：一个汉语字体文件里面有几万个汉字的字形信息，但网页上可能只用到其中十几个字，我能不能只把这十几个字拆分出来做一个字体文件呢？实际上确实可以大幅压缩字体文件大小。  
@@ -352,9 +378,11 @@ an1.play();
 ## 八、其他效果与彩蛋
 
 除了上文提到的那些动效，其他动效用css3就可以实现。比如第一屏左下角这个比较像挊的动画就是一个标准到无聊的css3动画。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/13.gif)  
 
 如果懒得自己实现css3动画，也可以使用现成的。比如[animation.css](https://github.com/daneden/animate.css)库就囊括了一些常用的动画，这个网页里鼠标移上“关于我们”合影的效果就是直接使用了这个库提供的“tada”动画（感觉名字萌萌哒）。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/3.gif)  
 
 比直接引用库还方便的动效就当属上文提过的[transition属性](http://www.w3school.com.cn/css3/css3_transition.asp)了。比如“团队”部分，我只是设置了当鼠标hover的时候，有以下变化：  
@@ -363,9 +391,11 @@ an1.play();
 带有介绍的、具有半透明背景和内阴影的覆盖层显示出来。  
 
 但是由于`transition`属性的设置，这些属性都有了渐变过程，变得自然多了。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/4.gif)  
 
 下面介绍一下彩蛋。最大的彩蛋就是当你打开开发者工具，会在控制台发现格式化的版权信息：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/chrome.png)  
 
 这涉及到console的格式化输出。  
@@ -393,6 +423,7 @@ console.log('%cDEEP%c深度映像工作室%c\n%c  ©2017 by DEEP IMAGING VISION 
 **假设这个官网主页已经写好了**，有一个手撸的`index.html`文件，引用了一些css文件，html和css都牵扯了一堆的资源文件，如图片、视频、字体等。js部分引用了一些库，还引用了一个手撸的`index.js`文件，`index.js`文件内部还引用了其他数个js文件。  
 
 现在把它用webpack打包，生成一套压缩和优化过的，可以直接用于生产环境的前端页面、代码文件和资源文件。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/zip.png)  
 
 构建这个项目的命令行脚本我都记录在根目录下的`build_steps.txt`文件里。首先是项目初始化和webpack安装：  
@@ -425,6 +456,7 @@ module.exports = {
 - 打包好的js文件起名规则是`js/[name].[hash].bundle.js`，也就是把打包好的文件存入`./docs/js`文件夹，文件名为`[name].[hash].bundle.js`。其中`[name]`代表原js文件名，`[hash]`代表本次生成的哈希值（用于避免上线之后浏览器缓存不及时更新的问题）。
 
 接下来这个配置就可以直接使用了。开始打包之前还需要编辑一下`package.json`文件，移除`main`属性并添加一行`"private": true`（为了防止npm意外发布你的代码）：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/pj.png)  
 
 然后在`script`属性里添加一个`build`属性：  
@@ -448,6 +480,7 @@ docs
 ES6语法固然很爽，但并不是所有浏览器都支持，出于浏览器兼容的目的我们应该在打包js文件时把ES6及以上语法转译为ES5。这个领域最有名的工具就是[babel](https://www.babeljs.cn/)。  
 
 babel的官网有一个在线转换器，可以把下一代js语法转为ES5语法。我觉得是个很好的“实验室”，可以研究下新语法的本质。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/babel.png)  
 *小例子：箭头函数与标准匿名函数对于this指向的差别*  
 
@@ -563,6 +596,7 @@ docs
 在webpack中，js是一等公民，webpack默认不打包css文件，打包css文件同样需要loader与其他插件。  
 
 在原始网页中css文件是直接link在`<head>`标签里的。但是用了webpack就不必在html中引用了，而是引用在js里：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/css.png)  
 
 为了能解析这些css文件，先安装**css-loader**：  
@@ -707,11 +741,12 @@ $ npm i -D url-loader
 test属性可以根据实际情况自己删改，但是应该包括所有可能引用到的资源文件的后缀名。  
 
 loader配置里的`limit`是文件大小阈值，这里设置为8k，8k以下的文件就会被转换为base64编码，否则原样复制到输出目录。以下是base64版svg图片嵌入html的例子：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/base64.png)  
 
 回到配置中来，`name`同样是指输出的文件名格式，这里用了函数类型作为属性值，函数返回`[path][name].[ext]?[hash]`，其实和直接写字符串效果一样。`[path]`是指文件名以外的相对路径（相对于项目根目录），这样打包以后输出目录中资源文件的相对路径会被完整保留下来。`[name]`指原文件名，`[ext]`指原扩展名。至于哈希值我把它放在了问号的后面，既能避免缓存问题，又能保持文件名的清爽。  
 
-一般而言我们对于资源文件的打包工作就结束了。但是在这个项目里，经测试发现有一张小图片被转化为base64以后不能被成功识别，其实就是[第三节](#三、浏览器兼容)提到过的Safari图标文件。可能Safari在提取图标的时候不支持base64只认文件路径。这里又牵扯出一个问题：如何处理例外？  
+一般而言我们对于资源文件的打包工作就结束了。但是在这个项目里，经测试发现有一张小图片被转化为base64以后不能被成功识别，其实就是[第三节](#三浏览器兼容)提到过的Safari图标文件。可能Safari在提取图标的时候不支持base64只认文件路径。这里又牵扯出一个问题：如何处理例外？  
 
 解决这个问题还需要一个**file-loader**。file-loader是url-loader的弱化版，换句话说url-loader只是在file-loader的基础上多了base64功能，恰好可以用file-loader处理那些不需要base64编码的文件。首先进行安装：
 ```sh
@@ -976,6 +1011,7 @@ devServer: {
 ```
 
 现在我们可以试一下了：在开发服务器运行中，把html文件上的一段文案改一下，保存，观察浏览器的console。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/hmr.png)  
 
 Nothing hot updated？怎么和说好的不一样？  
@@ -990,7 +1026,7 @@ import './layout/index.html';
 做到这里不禁感叹，以前使用Angular、React和Vue的时候体验都很顺滑，从没觉得从零搭建webpack脚手架难度这么大。毕竟这是一个边练边学的过程，真要做时间比较赶的项目，还是成熟脚手架更稳定。  
 
 ## 十一、模块懒加载
-webpack支持模块懒加载。在这个项目中，模块懒加载的需求其实来自于[第二节](#二、响应式设计)提到的移动端canvas聚光灯动画，[第六节](#六、Canvas动画部分)介绍了它的实现。由于这个动画是用在移动端代替背景视频的，因此我需要判断一下当前设备是否是移动端，只有在移动端导入和它相关的所有代码。  
+webpack支持模块懒加载。在这个项目中，模块懒加载的需求其实来自于[第二节](#二响应式设计)提到的移动端canvas聚光灯动画，[第六节](#六Canvas动画部分)介绍了它的实现。由于这个动画是用在移动端代替背景视频的，因此我需要判断一下当前设备是否是移动端，只有在移动端导入和它相关的所有代码。  
 
 在动画实现上，我分离了设置动画的代码并放在一个单独的`scrawl_canvas_animate.js`文件里。同时我又将Scrawl-canvas库魔改一番，合并缩减了代码放在了`scrawlCanvas.js`文件中，被`scrawl_canvas_animate.js`文件引用。  
 
@@ -1068,12 +1104,14 @@ js
 
 如果懒加载的模块与主模块有共同的依赖，为了节省请求资源大小，需要把公用的模块单独打包。这个涉及到Code Splitting，具体可参考[这篇文章](https://blog.csdn.net/zjw0742/article/details/74518955)。  
 
-除了canvas动画部分，lottie动画也适用于懒加载，因为如果浏览器不支持lottie-web（如[第三节](#三、浏览器兼容)提到的IE11/Edge），也不必加载相关代码和整个lottie-web库。lottie动画部分处理与上文相似，就不赘述了。  
+除了canvas动画部分，lottie动画也适用于懒加载，因为如果浏览器不支持lottie-web（如[第三节](#三浏览器兼容)提到的IE11/Edge），也不必加载相关代码和整个lottie-web库。lottie动画部分处理与上文相似，就不赘述了。  
 
 测试一下，在PC端Chrome浏览器打开页面，同域js请求是这样的：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/js-1.png)  
 
 用设备模拟器模拟移动端环境，同域js请求是这样的：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/js-2.png)  
 *前三个js存入缓存，最后一个是懒加载的js*  
 
@@ -1085,9 +1123,11 @@ js
 当页面用Webpack进行优化以后，总结一些尚余的可优化空间：  
 
 1. **静态文件CDN**：用CDN加载静态文件可以减少对页面服务器的请求。如果想通过CDN引用js库，推荐七牛云的Staticfile CDN。前些年还可以通过fork它的GitHub仓库再pr来自行增加js库，但现在好像不太维护了，只有一些最知名的库还在更新。即使如此，它的速度和易用性都不错，关键是免费。  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/scdn.png)  
 
 2. **spirit图**：spirit图算是经典的减少图片资源请求的压缩方式，主要是把小尺寸图片拼在一张大图里，然后通过css的`background-position`来定位。在本项目中，“团队”部分的照片就用spirit图优化过，六个照片其实是一张图片：  
+
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/spirit.png)  
 当然spirit图也有着维护较麻烦的缺点。一般只有不怎么变化的小尺寸图片会用这种方法。  
 
