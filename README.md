@@ -622,7 +622,7 @@ $ npm i -D css-loader
 
 css-loader的配置中，`url`表示是否解析css中`url()`语句引用的资源文件，`modules`表示是否启用局部作用域，默认为“scope”即启用，css中的类名等会被替换为哈希值。由于我只有一个html文件，所以选择了全局作用域。  
 
-如果只用css-loader，打包后你会发现相关css全部在了页面`<head>`里的`<style>`标签里，并没有输出单独的css文件。输出css文件需要使用一个插件：**mini-css-extract-plugin**。首先安装插件：
+如果只用css-loader，打包后你会发现相关css直接放在了页面`<head>`里的`<style>`标签里，并没有输出单独的css文件。输出css文件需要使用一个插件：**mini-css-extract-plugin**。首先安装插件：
 ```sh
 $ npm i -D mini-css-extract-plugin
 ```
@@ -702,8 +702,8 @@ UglifyJsPlugin的配置中，前两个都是关乎构建性能的，分别是启
 
 OptimizeCSSAssetsPlugin的配置可参考：[NMFR/optimize-css-assets-webpack-plugin](https://github.com/NMFR/optimize-css-assets-webpack-plugin)。需要注意的是，对css的压缩没有js压缩那么“无损”，据我所知有一些压缩规则可能会造成问题，比如：  
 
-- 属性合并。Longhand属性压缩为Shorthand属性（这两个名词的解释在这里：[CSS Shorthand vs. Longhand - When to Use Which - Hongkiat](https://www.hongkiat.com/blog/css-shorthand-longhand-notations/)）
-- 选择器合并。如`.a {width: 100px} .b {width: 100px}`会被压缩成`.a, .b {width: 100px}`
+- **属性合并**。Longhand属性压缩为Shorthand属性（这两个名词的解释在这里：[CSS Shorthand vs. Longhand - When to Use Which - Hongkiat](https://www.hongkiat.com/blog/css-shorthand-longhand-notations/)）
+- **选择器合并**。如`.a {width: 100px} .b {width: 100px}`会被压缩成`.a, .b {width: 100px}`
 
 当然一般情况下是不会有影响的，但如果压缩以后样式改变，可以想想是不是因为这些原因。  
 
