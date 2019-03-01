@@ -2,11 +2,11 @@
 # 深度映像工作室官网首页
 链接：[https://zamhown.github.io/divs-homepage](https://zamhown.github.io/divs-homepage)  
 
-本项目是我在2017年的本科毕业设计的一部分，当时是给学院的媒体工作室做了个官网，还包括一个 ASP.NET MVC 实现的作品管理系统和交流社区。  
+这个项目是我在2017年的本科毕业设计的一部分，当时是给学院里的媒体工作室做了个官网，还包括一个 ASP.NET MVC 实现的作品管理系统和交流社区。  
 
-> 这个媒体工作室的主要业务是拍视频、视频后期处理和平面设计，以实践教学为宗旨（并以揽私活维持生计），所以官网的首页部分需要做得炫酷一点。想当年为了答辩租了两个月服务器，一月120，还是有点小贵的。毕业以后由于没人续费，这个官网和整个作品社区就凉了……这次我把首页部分单拎了出来，用webpack优化了一遍传到了GitHub Pages。虽然是静态的，但终于有一个永久免费的服务器了。  
+> 深度映像工作室是我们学校的一个学生组织，主要业务是拍视频、视频后期处理和平面设计，以实践教学为宗旨（并以揽私活维持生计），所以官网的首页部分需要做得炫酷一点。想当年为了答辩租了两个月服务器，一月120，还是有点小贵的。毕业以后由于没人续费，这个官网和整个作品社区就凉了……这次我把首页部分单拎了出来，用webpack优化了一遍传到了GitHub Pages。虽然是静态的，但终于有一个永久免费的服务器了。  
 
-这次趁热把以前的东西总结一下，不然又会像这次一样一上手什么都忘了。先列举下该页面主要用到的技术：  
+这次趁热把以前的东西总结了一下，不然又会像这次一样一上手什么都忘了。先列举下该页面主要用到的技术：  
 
 - 响应式设计与浏览器兼容
 - 视频播放的控制（懒加载、loading进度条等）
@@ -117,7 +117,7 @@ PC端屏幕横宽，信息量大；移动端屏幕竖长，信息量小。如果
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/gif/8.gif)  
 
 第二个是之前提过的Flex Box的应用。“作品”部分的展示框架使用了Flex Box，由于是两年前的实现，现在看来使用Grid Layout要更合适。4:2:1:1的布局可以很方便适配手机端。  
-![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/zp-1.png)
+![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/zp-1.png)  
 *PC和平板布局*  
 
 ![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/zp-2.png)  
@@ -136,7 +136,7 @@ PC端屏幕横宽，信息量大；移动端屏幕竖长，信息量小。如果
 
 如果是在微信里打开这个网页，由于可以长按图片进行二维码识别，模态框的引导语就变成了这样：  
 
-![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qrc-3.jpg)  
+![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qrc-3.png)  
 
 第二处是QQ。在PC端网页上，点击QQ图标后会自动调起QQ以供进行临时会话，超链接是这样的：  
 ```
@@ -150,7 +150,7 @@ mqqwpa://im/chat?chat_type=wpa&uin=<你的客服QQ号>&version=1&src_type=web&we
 
 而在微信里则会把这个链接屏蔽，对应的处理是弹出一条提示：
 
-![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qq.jpg)  
+![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/qq.png)  
 
 ## 三、浏览器兼容
 浏览器兼容也算是一种广义的响应式设计。不同浏览器内核对h5、css3和js特性的支持各有差别，开发阶段需要不断地测试。目前这个页面在Chrome、Firefox、Safari、Edge、IE11和微信内置的魔改版X5内核上都没什么问题（如果在微信打开，需要点击“访问原网页”）。  
@@ -173,7 +173,7 @@ mqqwpa://im/chat?chat_type=wpa&uin=<你的客服QQ号>&version=1&src_type=web&we
 
 可能很多人发现用移动版Chrome进入B站以后，地址栏永远是粉色的。这个`<meta>`的作用就是如此：自定义Chrome地址栏的颜色。这里我设成了黑色，有助于获得更有整体性的视觉体验。  
 
-![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/chrome.jpg)  
+![图片加载中](https://raw.githubusercontent.com/zamhown/divs-homepage/master/readme/chrome.png)  
 
 
 ### 3.  Safari的网页图标定义
